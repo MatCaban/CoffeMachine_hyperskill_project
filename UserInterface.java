@@ -1,6 +1,12 @@
 package machine;
+import java.util.Scanner;
 
 public class UserInterface {
+    private Scanner sc;
+
+    public UserInterface(Scanner sc) {
+        this.sc = sc;
+    }
     public void start() {
         printMessages();
     }

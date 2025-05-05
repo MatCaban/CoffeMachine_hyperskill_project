@@ -5,6 +5,12 @@ public class Ingredients {
     private int milk;
     private int coffeeBeans;
 
+    public Ingredients(int water, int milk, int coffeeBeans) {
+        this.water = water;
+        this.milk = milk;
+        this.coffeeBeans = coffeeBeans;
+    }
+
     public int getCoffeeBeans() {
         return coffeeBeans;
     }
@@ -21,11 +27,7 @@ public class Ingredients {
         this.milk = milk;
     }
 
-    public Ingredients(int water, int milk, int coffeeBeans) {
-        this.water = water;
-        this.milk = milk;
-        this.coffeeBeans = coffeeBeans;
-    }
+
 
     public int getWater() {
         return this.water;
