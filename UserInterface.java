@@ -3,23 +3,23 @@ import java.util.Scanner;
 
 public class UserInterface {
     private Scanner sc;
+    private CoffeeMaker maker;
 
     public UserInterface(Scanner sc) {
         this.sc = sc;
+        this.maker = new CoffeeMaker();
     }
     public void start() {
-        printMessages();
+        askForCups();
     }
 
-    private void printMessages() {
-        System.out.println("""
-                Starting to make a coffee
-                Grinding coffee beans
-                Boiling water
-                Mixing boiled water with crushed coffee beans
-                Pouring coffee into the cup
-                Pouring some milk into the cup
-                Coffee is ready!
-                """);
+    private void askForCups() {
+        System.out.println("Write how many cups of coffee you will need: ");
+        int cups = Integer.parseInt(sc.nextLine());
+        int[] ingredientsForCups = maker.makeCups(cups);
+        System.out.printf("For %d cups of coffee you will need: %n", cups);
+        System.out.printf("%d ml of water%n", ingredientsForCups[0]);
+        System.out.printf("%d ml of milk%n", ingredientsForCups[1]);
+        System.out.printf("%d g of coffee beans%n", ingredientsForCups[2]);
     }
 }
