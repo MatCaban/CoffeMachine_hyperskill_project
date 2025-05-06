@@ -19,22 +19,22 @@ public class UserInterface {
 
     private void askForWater() {
         System.out.println("Write how many ml of water the coffee machine has:");
-        maker.setWaterStorage(validateUserInput());
+        maker.setWaterStorage(validateIntegerUserInput());
     }
 
     public void askForMilk() {
         System.out.println("Write how many ml of milk the coffee machine has:");
-        maker.setMilkStorage(validateUserInput());
+        maker.setMilkStorage(validateIntegerUserInput());
     }
 
     public void askForCoffeeBeans() {
         System.out.println("Write how many grams of coffee beans the coffee machine has:");
-        maker.setCoffeeBeansStorage(validateUserInput());
+        maker.setCoffeeBeansStorage(validateIntegerUserInput());
     }
 
     public void askForNeededCoffee() {
         System.out.println("Write how many cups of coffee you will need: ");
-        maker.makeCups(validateUserInput());
+        maker.makeCups(validateIntegerUserInput());
     }
 
 
@@ -53,7 +53,7 @@ public class UserInterface {
         }
     }
 
-    private int validateUserInput() {
+    private int validateIntegerUserInput() {
         int input = 0;
         while(true) {
             try {
@@ -65,6 +65,18 @@ public class UserInterface {
             } catch (Exception e) {
                 System.out.println("Invalid input, only numeric values greater than 0");
             }
+        }
+    }
+
+    private String validateStringUserInput() {
+        String input = "";
+        while (true) {
+            if(input.equals("buy")
+            || input.equals("fill")
+            || input.equals("take")) {
+                return input;
+            }
+            System.out.println("Wrong input");
         }
     }
 }
