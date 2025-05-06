@@ -69,7 +69,7 @@ public class UserInterface {
     }
 
     private String validateStringUserInput() {
-        String input = "";
+        String input = sc.nextLine();
         while (true) {
             if(input.equals("buy")
             || input.equals("fill")

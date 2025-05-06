@@ -4,9 +4,17 @@ public class Ingredients {
     private int water;
     private int milk;
     private int coffeeBeans;
+    private int budget;
+    private int cups;
+
+    // initialized values based on project request
 
     public Ingredients() {
-
+        this.water = 400;
+        this.milk = 540;
+        this.coffeeBeans = 120;
+        this.budget = 550;
+        this.cups = 9;
     }
 
     public int getCoffeeBeans() {
@@ -35,7 +43,19 @@ public class Ingredients {
         this.water += water;
     }
 
+    public int getBudget() {
+        return budget;
+    }
 
+    public void setBudget(int budget) {
+        this.budget = budget;
+    }
 
+    public int getCups() {
+        return cups;
+    }
 
+    public void setCups(int cups) {
+        this.cups = cups;
+    }
 }
