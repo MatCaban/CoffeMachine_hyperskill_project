@@ -57,7 +57,7 @@ public class UserInterface {
                 fill();
                 break;
             case "take":
-                //TODO take money
+                take();
                 break;
         }
     }
@@ -91,6 +91,12 @@ public class UserInterface {
 
         System.out.println("Write how many disposable cups you want to add: ");
         maker.setCups((maker.getCups() + validateIntegerUserInput(1, 10000)));
+    }
+
+    public void take() {
+        System.out.printf("I gave you $%d%n", maker.getBudget());
+        maker.setBudget(0);
+        System.out.println();
     }
 
 
