@@ -13,6 +13,9 @@ public class UserInterface {
         askForWater();
         askForMilk();
         askForCoffeeBeans();
+        askForNeededCoffee();
+        maker.howManyCupsCanIMake();
+        maker.cupsRequested();
     }
 
     private void askForWater() {
@@ -32,6 +35,7 @@ public class UserInterface {
 
     public void askForNeededCoffee() {
         System.out.println("Write how many cups of coffee you will need: ");
+        maker.makeCups(validateUserInput());
     }
 
     private int validateUserInput() {
