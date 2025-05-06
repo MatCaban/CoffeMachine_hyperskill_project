@@ -5,10 +5,8 @@ public class Ingredients {
     private int milk;
     private int coffeeBeans;
 
-    public Ingredients(int water, int milk, int coffeeBeans) {
-        this.water = water;
-        this.milk = milk;
-        this.coffeeBeans = coffeeBeans;
+    public Ingredients() {
+
     }
 
     public int getCoffeeBeans() {
