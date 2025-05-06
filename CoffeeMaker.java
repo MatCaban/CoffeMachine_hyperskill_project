@@ -4,13 +4,13 @@ public class CoffeeMaker {
     private int milkForOneCup;
     private int waterForOneCup;
     private int beansForOneCup;
-    private Ingredients ingredients;
+    private Ingredients ingredientsStorage;
 
     public CoffeeMaker() {
         this.milkForOneCup = 200;
         this.waterForOneCup = 50;
         this.beansForOneCup = 15;
-        this.ingredients = new Ingredients();
+        this.ingredientsStorage = new Ingredients();
     }
 
     public int[] makeCups(int numOfCups){
@@ -22,5 +22,9 @@ public class CoffeeMaker {
         }
 
         return ingredientsPerCup;
+    }
+
+    public void setWaterStorage(int amountOfWater) {
+        this.ingredientsStorage.setWater(amountOfWater);
     }
 }
