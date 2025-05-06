@@ -78,17 +78,19 @@ public class UserInterface {
     // buying coffee based on user choice
 
     public void buyingCoffee() {
-        System.out.println("\nWhat do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino:");
-        int input = validateIntegerUserInput(1,3);
+        System.out.println("\nWhat do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back - to main menu:");
+        String input = validateStringUserInput();
         switch (input) {
-            case 1:
+            case "1":
                 maker.makeEspresso();
                 break;
-            case 2:
+            case "2":
                 maker.makeLatte();
                 break;
-            case 3:
+            case "3":
                 maker.makeCappuccino();
+                break;
+            case "back":
                 break;
         }
     }
@@ -151,8 +153,10 @@ public class UserInterface {
                     return input;
                 }
                 System.out.println("Invalid input, only numeric values greater than 0");
+
             } catch (Exception e) {
                 System.out.println("Invalid input, only numeric values greater than 0");
+
             }
         }
     }
@@ -166,6 +170,12 @@ public class UserInterface {
             || input.equals("remaining")
             || input.equals("exit")) {
                 return input;
+            }
+            if(input.equals("back")
+            || input.equals("1")
+            ||input.equals("2")
+                    || input.equals("3")) {
+                        return input;
             }
             System.out.println("Wrong input");
         }
