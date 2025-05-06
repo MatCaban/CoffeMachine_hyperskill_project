@@ -11,12 +11,23 @@ public class UserInterface {
     }
     public void start() {
         askForWater();
+        askForMilk();
+        askForCoffeeBeans();
     }
 
     private void askForWater() {
         System.out.println("Write how many ml of water the coffee machine has:");
         maker.setWaterStorage(validateUserInput());
-        System.out.println("succesfully validated");
+    }
+
+    public void askForMilk() {
+        System.out.println("Write how many ml of milk the coffee machine has:");
+        maker.setMilkStorage(validateUserInput());
+    }
+
+    public void askForCoffeeBeans() {
+        System.out.println("Write how many grams of coffee beans the coffee machine has:");
+        maker.setCoffeeBeansStorage(validateUserInput());
     }
 
     private int validateUserInput() {

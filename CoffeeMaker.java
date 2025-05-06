@@ -27,4 +27,12 @@ public class CoffeeMaker {
     public void setWaterStorage(int amountOfWater) {
         this.ingredientsStorage.setWater(amountOfWater);
     }
+
+    public void setMilkStorage(int amountOfMilk) {
+        this.ingredientsStorage.setMilk(amountOfMilk);
+    }
+
+    public void setCoffeeBeansStorage(int amountOfCoffeeBeans) {
+        this.ingredientsStorage.setCoffeeBeans(amountOfCoffeeBeans);
+    }
 }
