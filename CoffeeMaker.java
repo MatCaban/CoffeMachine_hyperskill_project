@@ -68,6 +68,18 @@ public class CoffeeMaker {
         return this.ingredientsStorage.getCups();
     }
 
+    public void makeEspresso() {
+        this.ingredientsStorage.takeEspressoIngredients();
+    }
+
+    public void makeLatte() {
+        this.ingredientsStorage.takeLatteIngredients();
+    }
+
+    public void makeCappuccino() {
+        this.ingredientsStorage.takeCappuccinoIngredients();
+    }
+
 
     // number of coffee cups I can make based on ingredients in storage
 

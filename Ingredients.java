@@ -58,4 +58,27 @@ public class Ingredients {
     public void setCups(int cups) {
         this.cups = cups;
     }
+
+    public void takeEspressoIngredients() {
+        this.water -= 250;
+        this.coffeeBeans -= 16;
+        this.budget += 4;
+        this.cups -= 1;
+    }
+
+    public void takeLatteIngredients() {
+        this.water -= 350;
+        this.milk -= 75;
+        this.coffeeBeans -= 20;
+        this.budget += 7;
+        this.cups -= 1;
+    }
+
+    public void takeCappuccinoIngredients() {
+        this.water -= 200;
+        this.milk -= 100;
+        this.coffeeBeans -= 12;
+        this.budget += 6;
+        this.cups -= 1;
+    }
 }

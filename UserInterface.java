@@ -1,4 +1,5 @@
 package machine;
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -12,7 +13,7 @@ public class UserInterface {
     public void start() {
         coffeeMachineStatus();
         userAction();
-
+        coffeeMachineStatus();
 
 //        askForWater();
 //        askForMilk();
@@ -50,7 +51,7 @@ public class UserInterface {
         String action = validateStringUserInput();
         switch(action) {
             case "buy":
-                //TODO buy something
+                buyingCoffee();
                 break;
             case "fill":
                 //TODO refill
@@ -61,9 +62,27 @@ public class UserInterface {
         }
     }
 
+    public void buyingCoffee() {
+        System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino:");
+        int input = validateIntegerUserInput(1,3);
+        switch (input) {
+            case 1:
+                maker.makeEspresso();
+                break;
+            case 2:
+                maker.makeLatte();
+                break;
+            case 3:
+                maker.makeCappuccino();
+                break;
+        }
+    }
+
+
+
     public void askForNeededCoffee() {
         System.out.println("Write how many cups of coffee you will need: ");
-        maker.makeCups(validateIntegerUserInput());
+        maker.makeCups(validateIntegerUserInput(1,2));
     }
 
 
@@ -82,12 +101,14 @@ public class UserInterface {
         }
     }
 
-    private int validateIntegerUserInput() {
+    // validate user integer input, based on range (min value, max value) included
+
+    private int validateIntegerUserInput(int minValue, int maxValue) {
         int input = 0;
         while(true) {
             try {
                 input = Integer.parseInt(sc.nextLine());
-                if(input >= 0) {
+                if(input >= minValue && input <= maxValue) {
                     return input;
                 }
                 System.out.println("Invalid input, only numeric values greater than 0");
