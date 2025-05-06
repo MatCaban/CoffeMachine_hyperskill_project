@@ -30,6 +30,10 @@ public class UserInterface {
         maker.setCoffeeBeansStorage(validateUserInput());
     }
 
+    public void askForNeededCoffee() {
+        System.out.println("Write how many cups of coffee you will need: ");
+    }
+
     private int validateUserInput() {
         int input = 0;
         while(true) {
