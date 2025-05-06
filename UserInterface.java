@@ -97,17 +97,17 @@ public class UserInterface {
 
     public void fill() {
         System.out.println("Write how many ml of water you want to add: ");
-        maker.setWaterStorage(maker.getWaterAmount() + validateIntegerUserInput(1, 10000));
+        maker.setWaterStorage(maker.getWaterAmount() + validateIntegerUserInput(0, 10000));
 
 
         System.out.println("Write how many ml of milk you want to add: ");
-        maker.setMilkStorage(maker.getMilkAmount() + validateIntegerUserInput(1, 10000));
+        maker.setMilkStorage(maker.getMilkAmount() + validateIntegerUserInput(0, 10000));
 
         System.out.println("Write how many grams of coffee beans you want to add:");
-        maker.setCoffeeBeansStorage(maker.getCoffeeBeansAmount() + validateIntegerUserInput(1, 10000));
+        maker.setCoffeeBeansStorage(maker.getCoffeeBeansAmount() + validateIntegerUserInput(0, 10000));
 
         System.out.println("Write how many disposable cups you want to add: ");
-        maker.setCups((maker.getCups() + validateIntegerUserInput(1, 10000)));
+        maker.setCups((maker.getCups() + validateIntegerUserInput(0, 10000)));
     }
 
     // withdrawal all money

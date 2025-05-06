@@ -69,15 +69,27 @@ public class CoffeeMaker {
     }
 
     public void makeEspresso() {
-        this.ingredientsStorage.takeEspressoIngredients();
+        if(this.ingredientsStorage.takeEspressoIngredients().equals("")){
+            System.out.println("I have enough resources, making you a coffee!");
+        } else {
+            System.out.printf("Sorry, not enough %s!%n", this.ingredientsStorage.takeEspressoIngredients());
+        }
     }
 
     public void makeLatte() {
-        this.ingredientsStorage.takeLatteIngredients();
+        if (this.ingredientsStorage.takeLatteIngredients().equals("")){
+            System.out.println("I have enough resources, making you a coffee!");
+        } else {
+            System.out.printf("Sorry, not enough %s!%n", this.ingredientsStorage.takeEspressoIngredients());
+        }
     }
 
     public void makeCappuccino() {
-        this.ingredientsStorage.takeCappuccinoIngredients();
+        if (this.ingredientsStorage.takeCappuccinoIngredients().equals("")){
+            System.out.println("I have enough resources, making you a coffee!");
+        } else {
+            System.out.printf("Sorry, not enough %s!%n", this.ingredientsStorage.takeCappuccinoIngredients());
+        }
     }
 
 

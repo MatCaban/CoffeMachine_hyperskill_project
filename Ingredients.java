@@ -59,26 +59,59 @@ public class Ingredients {
         this.cups = cups;
     }
 
-    public void takeEspressoIngredients() {
-        this.water -= 250;
-        this.coffeeBeans -= 16;
-        this.budget += 4;
-        this.cups -= 1;
+    public String takeEspressoIngredients() {
+        if (this.water < 250) {
+            return "water";
+        } else if (this.coffeeBeans < 16) {
+            return "beans";
+        } else if (this.cups == 0) {
+            return "cups";
+        } else {
+            this.water -= 250;
+            this.coffeeBeans -= 16;
+            this.budget += 4;
+            this.cups -= 1;
+        }
+        return "";
     }
 
-    public void takeLatteIngredients() {
-        this.water -= 350;
-        this.milk -= 75;
-        this.coffeeBeans -= 20;
-        this.budget += 7;
-        this.cups -= 1;
+    public String takeLatteIngredients() {
+        if (this.water < 350) {
+            return "water";
+        } else if (this.milk < 75) {
+            return "milk";
+        } else if (this.coffeeBeans < 20) {
+            return "beans";
+        } else if (cups == 0) {
+            return "cups";
+        } else {
+            this.water -= 350;
+            this.milk -= 75;
+            this.coffeeBeans -= 20;
+            this.budget += 7;
+            this.cups -= 1;
+            return "";
+        }
+
     }
 
-    public void takeCappuccinoIngredients() {
-        this.water -= 200;
-        this.milk -= 100;
-        this.coffeeBeans -= 12;
-        this.budget += 6;
-        this.cups -= 1;
+    public String takeCappuccinoIngredients() {
+        if (this.water < 200) {
+            return "water";
+        } else if(this.milk < 100) {
+            return "milk";
+        } else if(this.coffeeBeans < 12) {
+            return "beans";
+        } else if(this.cups == 0) {
+            return "cups";
+        } else {
+            this.water -= 200;
+            this.milk -= 100;
+            this.coffeeBeans -= 12;
+            this.budget += 6;
+            this.cups -= 1;
+            return "";
+        }
+
     }
 }
