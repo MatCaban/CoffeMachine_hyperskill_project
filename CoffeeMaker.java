@@ -17,12 +17,12 @@ public class CoffeeMaker {
         this.totalIngredientsPerRequestedCups = new int[3];
     }
 
-    public void makeCups(int numOfCups){
-       this.totalIngredientsPerRequestedCups[0] = numOfCups * this.waterForOneCup;
-       this.totalIngredientsPerRequestedCups[1] = numOfCups * this.milkForOneCup;
-       this.totalIngredientsPerRequestedCups[2] = numOfCups * this.beansForOneCup;
+    // count how much ingredients is needed for number of cups requested by user
 
-        System.out.println(Arrays.toString(totalIngredientsPerRequestedCups));
+    public void makeCups(int numOfCups) {
+        this.totalIngredientsPerRequestedCups[0] = numOfCups * this.waterForOneCup;
+        this.totalIngredientsPerRequestedCups[1] = numOfCups * this.milkForOneCup;
+        this.totalIngredientsPerRequestedCups[2] = numOfCups * this.beansForOneCup;
 
     }
 
@@ -44,7 +44,7 @@ public class CoffeeMaker {
         int totalCupsAvailable = this.ingredientsStorage.getWater() / this.waterForOneCup;
         if (totalCupsAvailable > this.ingredientsStorage.getMilk() / this.milkForOneCup) {
             totalCupsAvailable = this.ingredientsStorage.getMilk() / this.milkForOneCup;
-        } else if (totalCupsAvailable > this.ingredientsStorage.getCoffeeBeans() / this.beansForOneCup){
+        } else if (totalCupsAvailable > this.ingredientsStorage.getCoffeeBeans() / this.beansForOneCup) {
             totalCupsAvailable = this.ingredientsStorage.getCoffeeBeans() / this.beansForOneCup;
         }
 

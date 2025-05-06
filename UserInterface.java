@@ -14,8 +14,7 @@ public class UserInterface {
         askForMilk();
         askForCoffeeBeans();
         askForNeededCoffee();
-        maker.howManyCupsCanIMake();
-        maker.cupsRequested();
+        coffeeMakerAnswerToRequestedCoffee();
     }
 
     private void askForWater() {
@@ -36,6 +35,22 @@ public class UserInterface {
     public void askForNeededCoffee() {
         System.out.println("Write how many cups of coffee you will need: ");
         maker.makeCups(validateUserInput());
+    }
+
+
+    public void coffeeMakerAnswerToRequestedCoffee() {
+        int cupsRequested = maker.cupsRequested();
+        int cupsAvailable = maker.howManyCupsCanIMake();
+        if (cupsAvailable == cupsRequested) {
+            System.out.println("Yes, I can make that amount of coffee");
+        }
+        if (cupsAvailable > cupsRequested) {
+            System.out.printf("Yes, I can make that amount of coffee (and even %d more than that)%n"
+                    , (cupsAvailable - cupsRequested));
+        }
+        if (cupsAvailable < cupsRequested) {
+            System.out.printf("No, I can make only %d cup(s) of coffee", cupsAvailable);
+        }
     }
 
     private int validateUserInput() {
