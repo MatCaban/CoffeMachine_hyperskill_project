@@ -13,7 +13,9 @@ public class CoffeeMaker {
         this.milkForOneCup = 50;
         this.waterForOneCup = 200;
         this.beansForOneCup = 15;
-        this.ingredientsStorage = new Ingredients();
+
+        //setting based on project requirements
+        this.ingredientsStorage = new Ingredients(400, 540, 120, 550, 9);
         this.totalIngredientsPerRequestedCups = new int[3];
     }
 
@@ -37,6 +39,35 @@ public class CoffeeMaker {
     public void setCoffeeBeansStorage(int amountOfCoffeeBeans) {
         this.ingredientsStorage.setCoffeeBeans(amountOfCoffeeBeans);
     }
+
+    public void setBudget(int budget) {
+        this.ingredientsStorage.setBudget(budget);
+    }
+
+    public void setCups(int cups) {
+        this.ingredientsStorage.setCups(cups);
+    }
+
+    public int getWaterAmount() {
+        return this.ingredientsStorage.getWater();
+    }
+
+    public int getMilkAmount() {
+        return this.ingredientsStorage.getMilk();
+    }
+
+    public int getCoffeeBeansAmount() {
+        return this.ingredientsStorage.getCoffeeBeans();
+    }
+
+    public int getBudget() {
+        return this.ingredientsStorage.getBudget();
+    }
+
+    public int getCups() {
+        return this.ingredientsStorage.getCups();
+    }
+
 
     // number of coffee cups I can make based on ingredients in storage
 

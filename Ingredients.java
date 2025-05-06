@@ -7,14 +7,14 @@ public class Ingredients {
     private int budget;
     private int cups;
 
-    // initialized values based on project request
 
-    public Ingredients() {
-        this.water = 400;
-        this.milk = 540;
-        this.coffeeBeans = 120;
-        this.budget = 550;
-        this.cups = 9;
+
+    public Ingredients(int water, int milk, int coffeeBeans, int budget, int cups) {
+        this.water = water;
+        this.milk = milk;
+        this.coffeeBeans = coffeeBeans;
+        this.budget = budget;
+        this.cups = cups;
     }
 
     public int getCoffeeBeans() {

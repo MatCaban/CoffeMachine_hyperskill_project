@@ -10,26 +10,55 @@ public class UserInterface {
         this.maker = new CoffeeMaker();
     }
     public void start() {
-        askForWater();
-        askForMilk();
-        askForCoffeeBeans();
-        askForNeededCoffee();
-        coffeeMakerAnswerToRequestedCoffee();
+        coffeeMachineStatus();
+        userAction();
+
+
+//        askForWater();
+//        askForMilk();
+//        askForCoffeeBeans();
+//        askForNeededCoffee();
+//        coffeeMakerAnswerToRequestedCoffee();
     }
 
-    private void askForWater() {
-        System.out.println("Write how many ml of water the coffee machine has:");
-        maker.setWaterStorage(validateIntegerUserInput());
+//    private void askForWater() {
+//        System.out.println("Write how many ml of water the coffee machine has:");
+//        maker.setWaterStorage(validateIntegerUserInput());
+//    }
+//
+//    public void askForMilk() {
+//        System.out.println("Write how many ml of milk the coffee machine has:");
+//        maker.setMilkStorage(validateIntegerUserInput());
+//    }
+//
+//    public void askForCoffeeBeans() {
+//        System.out.println("Write how many grams of coffee beans the coffee machine has:");
+//        maker.setCoffeeBeansStorage(validateIntegerUserInput());
+//    }
+
+    public void coffeeMachineStatus() {
+        System.out.println("The coffee machine has:");
+        System.out.printf("%d ml of water%n", maker.getWaterAmount());
+        System.out.printf("%d ml of milk%n", maker.getMilkAmount());
+        System.out.printf("%d g of coffee beans%n", maker.getCoffeeBeansAmount());
+        System.out.printf("%d disposable cups%n", maker.getCups() );
+        System.out.printf("$%d of money%n", maker.getBudget());
     }
 
-    public void askForMilk() {
-        System.out.println("Write how many ml of milk the coffee machine has:");
-        maker.setMilkStorage(validateIntegerUserInput());
-    }
-
-    public void askForCoffeeBeans() {
-        System.out.println("Write how many grams of coffee beans the coffee machine has:");
-        maker.setCoffeeBeansStorage(validateIntegerUserInput());
+    public void userAction() {
+        System.out.println("Write action (buy, fill, take): ");
+        String action = validateStringUserInput();
+        switch(action) {
+            case "buy":
+                //TODO buy something
+                break;
+            case "fill":
+                //TODO refill
+                break;
+            case "take":
+                //TODO take money
+                break;
+        }
     }
 
     public void askForNeededCoffee() {
@@ -69,8 +98,8 @@ public class UserInterface {
     }
 
     private String validateStringUserInput() {
-        String input = sc.nextLine();
         while (true) {
+            String input = sc.nextLine();
             if(input.equals("buy")
             || input.equals("fill")
             || input.equals("take")) {
