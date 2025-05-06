@@ -11,9 +11,9 @@ public class UserInterface {
         this.maker = new CoffeeMaker();
     }
     public void start() {
-        coffeeMachineStatus();
+
         userAction();
-        coffeeMachineStatus();
+
 
 //        askForWater();
 //        askForMilk();
@@ -38,29 +38,44 @@ public class UserInterface {
 //    }
 
     public void coffeeMachineStatus() {
+        System.out.println();
         System.out.println("The coffee machine has:");
         System.out.printf("%d ml of water%n", maker.getWaterAmount());
         System.out.printf("%d ml of milk%n", maker.getMilkAmount());
         System.out.printf("%d g of coffee beans%n", maker.getCoffeeBeansAmount());
         System.out.printf("%d disposable cups%n", maker.getCups() );
         System.out.printf("$%d of money%n", maker.getBudget());
+        System.out.println();
     }
 
+    // decide what to do based on user input
+
     public void userAction() {
-        System.out.println("Write action (buy, fill, take): ");
-        String action = validateStringUserInput();
-        switch(action) {
-            case "buy":
-                buyingCoffee();
+        while (true) {
+            System.out.println("Write action (buy, fill, take, remaining, exit):");
+            String action = validateStringUserInput();
+            if (action.equals("exit")) {
                 break;
-            case "fill":
-                fill();
-                break;
-            case "take":
-                take();
-                break;
+            }
+            switch(action) {
+                case "buy":
+                    buyingCoffee();
+                    break;
+                case "fill":
+                    fill();
+                    break;
+                case "take":
+                    take();
+                    break;
+                case "remaining":
+                    coffeeMachineStatus();
+                    break;
+            }
         }
+
     }
+
+    // buying coffee based on user choice
 
     public void buyingCoffee() {
         System.out.println("\nWhat do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino:");
@@ -78,6 +93,8 @@ public class UserInterface {
         }
     }
 
+    // fill the machine with new ingredients
+
     public void fill() {
         System.out.println("Write how many ml of water you want to add: ");
         maker.setWaterStorage(maker.getWaterAmount() + validateIntegerUserInput(1, 10000));
@@ -92,6 +109,8 @@ public class UserInterface {
         System.out.println("Write how many disposable cups you want to add: ");
         maker.setCups((maker.getCups() + validateIntegerUserInput(1, 10000)));
     }
+
+    // withdrawal all money
 
     public void take() {
         System.out.printf("I gave you $%d%n", maker.getBudget());
@@ -143,7 +162,9 @@ public class UserInterface {
             String input = sc.nextLine();
             if(input.equals("buy")
             || input.equals("fill")
-            || input.equals("take")) {
+            || input.equals("take")
+            || input.equals("remaining")
+            || input.equals("exit")) {
                 return input;
             }
             System.out.println("Wrong input");
