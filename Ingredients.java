@@ -40,7 +40,7 @@ public class Ingredients {
     }
 
     public void setWater(int water) {
-        this.water += water;
+        this.water = water;
     }
 
     public int getBudget() {

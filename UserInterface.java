@@ -54,7 +54,7 @@ public class UserInterface {
                 buyingCoffee();
                 break;
             case "fill":
-                //TODO refill
+                fill();
                 break;
             case "take":
                 //TODO take money
@@ -63,7 +63,7 @@ public class UserInterface {
     }
 
     public void buyingCoffee() {
-        System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino:");
+        System.out.println("\nWhat do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino:");
         int input = validateIntegerUserInput(1,3);
         switch (input) {
             case 1:
@@ -78,6 +78,20 @@ public class UserInterface {
         }
     }
 
+    public void fill() {
+        System.out.println("Write how many ml of water you want to add: ");
+        maker.setWaterStorage(maker.getWaterAmount() + validateIntegerUserInput(1, 10000));
+
+
+        System.out.println("Write how many ml of milk you want to add: ");
+        maker.setMilkStorage(maker.getMilkAmount() + validateIntegerUserInput(1, 10000));
+
+        System.out.println("Write how many grams of coffee beans you want to add:");
+        maker.setCoffeeBeansStorage(maker.getCoffeeBeansAmount() + validateIntegerUserInput(1, 10000));
+
+        System.out.println("Write how many disposable cups you want to add: ");
+        maker.setCups((maker.getCups() + validateIntegerUserInput(1, 10000)));
+    }
 
 
     public void askForNeededCoffee() {
