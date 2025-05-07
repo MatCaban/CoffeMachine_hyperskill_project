@@ -3,22 +3,15 @@ package machine;
 import java.util.Arrays;
 
 public class CoffeeMaker {
-    final private int milkForOneCup;
-    final private int waterForOneCup;
-    final private int beansForOneCup;
     final private Ingredients ingredientsStorage;
-    private int[] totalIngredientsPerRequestedCups;
     private int cupsMade;
 
     public CoffeeMaker() {
-        this.milkForOneCup = 50;
-        this.waterForOneCup = 200;
-        this.beansForOneCup = 15;
         this.cupsMade = 0;
 
-        //setting based on project requirements
+        //setting based on project requirements, machine strats with this amount of ingredients
         this.ingredientsStorage = new Ingredients(400, 540, 120, 550, 9);
-        this.totalIngredientsPerRequestedCups = new int[3];
+
     }
 
     public int getCupsMade() {
@@ -32,14 +25,8 @@ public class CoffeeMaker {
     public void resetCupsMade() {
         this.cupsMade = 0;
     }
-    // count how much ingredients is needed for number of cups requested by user
 
-    public void makeCups(int numOfCups) {
-        this.totalIngredientsPerRequestedCups[0] = numOfCups * this.waterForOneCup;
-        this.totalIngredientsPerRequestedCups[1] = numOfCups * this.milkForOneCup;
-        this.totalIngredientsPerRequestedCups[2] = numOfCups * this.beansForOneCup;
-
-    }
+    // setters and getters for ingredients from ingredients class
 
     public void setWaterStorage(int amountOfWater) {
         this.ingredientsStorage.setWater(amountOfWater);
@@ -81,8 +68,12 @@ public class CoffeeMaker {
         return this.ingredientsStorage.getCups();
     }
 
+
+    // if Ingredients method return empty string there is enough resources to make coffee
+    // otherwise string will contain ingredients that is in short supply
+
     public void makeEspresso() {
-        if(this.ingredientsStorage.takeEspressoIngredients().equals("")){
+        if(this.ingredientsStorage.takeEspressoIngredients().isEmpty()){
             System.out.println("I have enough resources, making you a coffee!");
             increaseCupsMade();
         } else {
@@ -91,7 +82,7 @@ public class CoffeeMaker {
     }
 
     public void makeLatte() {
-        if (this.ingredientsStorage.takeLatteIngredients().equals("")){
+        if (this.ingredientsStorage.takeLatteIngredients().isEmpty()){
             System.out.println("I have enough resources, making you a coffee!");
             increaseCupsMade();
         } else {
@@ -100,7 +91,7 @@ public class CoffeeMaker {
     }
 
     public void makeCappuccino() {
-        if (this.ingredientsStorage.takeCappuccinoIngredients().equals("")){
+        if (this.ingredientsStorage.takeCappuccinoIngredients().isEmpty()){
             System.out.println("I have enough resources, making you a coffee!");
             increaseCupsMade();
         } else {
@@ -108,21 +99,4 @@ public class CoffeeMaker {
         }
     }
 
-
-    // number of coffee cups I can make based on ingredients in storage
-
-    public int howManyCupsCanIMake() {
-        int totalCupsAvailable = this.ingredientsStorage.getWater() / this.waterForOneCup;
-        if (totalCupsAvailable > this.ingredientsStorage.getMilk() / this.milkForOneCup) {
-            totalCupsAvailable = this.ingredientsStorage.getMilk() / this.milkForOneCup;
-        } else if (totalCupsAvailable > this.ingredientsStorage.getCoffeeBeans() / this.beansForOneCup) {
-            totalCupsAvailable = this.ingredientsStorage.getCoffeeBeans() / this.beansForOneCup;
-        }
-
-        return totalCupsAvailable;
-    }
-
-    public int cupsRequested() {
-        return this.totalIngredientsPerRequestedCups[0] / 200;
-    }
 }

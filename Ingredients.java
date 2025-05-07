@@ -34,7 +34,6 @@ public class Ingredients {
     }
 
 
-
     public int getWater() {
         return this.water;
     }
@@ -58,6 +57,9 @@ public class Ingredients {
     public void setCups(int cups) {
         this.cups = cups;
     }
+
+    // check if there is enough ingredients for coffee, if not output needed resource
+    // if there is enough resources, output empty string and decrease resources based on given value
 
     public String takeEspressoIngredients() {
         if (this.water < 250) {

@@ -1,5 +1,6 @@
 package machine;
-import java.sql.SQLOutput;
+
+
 import java.util.Scanner;
 
 public class UserInterface {
@@ -10,32 +11,14 @@ public class UserInterface {
         this.sc = sc;
         this.maker = new CoffeeMaker();
     }
+
     public void start() {
 
         userAction();
 
-
-//        askForWater();
-//        askForMilk();
-//        askForCoffeeBeans();
-//        askForNeededCoffee();
-//        coffeeMakerAnswerToRequestedCoffee();
     }
 
-//    private void askForWater() {
-//        System.out.println("Write how many ml of water the coffee machine has:");
-//        maker.setWaterStorage(validateIntegerUserInput());
-//    }
-//
-//    public void askForMilk() {
-//        System.out.println("Write how many ml of milk the coffee machine has:");
-//        maker.setMilkStorage(validateIntegerUserInput());
-//    }
-//
-//    public void askForCoffeeBeans() {
-//        System.out.println("Write how many grams of coffee beans the coffee machine has:");
-//        maker.setCoffeeBeansStorage(validateIntegerUserInput());
-//    }
+    // output available resources
 
     public void coffeeMachineStatus() {
         System.out.println();
@@ -43,7 +26,7 @@ public class UserInterface {
         System.out.printf("%d ml of water%n", maker.getWaterAmount());
         System.out.printf("%d ml of milk%n", maker.getMilkAmount());
         System.out.printf("%d g of coffee beans%n", maker.getCoffeeBeansAmount());
-        System.out.printf("%d disposable cups%n", maker.getCups() );
+        System.out.printf("%d disposable cups%n", maker.getCups());
         System.out.printf("$%d of money%n", maker.getBudget());
         System.out.println();
     }
@@ -52,23 +35,25 @@ public class UserInterface {
 
     public void userAction() {
         while (true) {
-            System.out.println("Write action (buy, fill, take, remaining, exit):");
+            System.out.println("Write action (buy, fill, take, clean, remaining, exit):");
             String action = validateStringUserInput();
             if (action.equals("exit")) {
                 break;
             }
-            if (maker.getCupsMade() > 0) {
 
+             // if machine made 10 cups without cleaning, cleaning si required
+
+            if (maker.getCupsMade() == 10) {
                 while (true) {
                     System.out.println("I need cleaning!");
                     action = validateStringUserInput();
-                    if(action.equals("clean")){
+                    if (action.equals("clean")) {
                         clean();
                         break;
                     }
                 }
             }
-            switch(action) {
+            switch (action) {
                 case "buy":
                     buyingCoffee();
                     break;
@@ -141,41 +126,21 @@ public class UserInterface {
         System.out.println("I have been cleaned!");
     }
 
-    public void askForNeededCoffee() {
-        System.out.println("Write how many cups of coffee you will need: ");
-        maker.makeCups(validateIntegerUserInput(1,2));
-    }
-
-
-    public void coffeeMakerAnswerToRequestedCoffee() {
-        int cupsRequested = maker.cupsRequested();
-        int cupsAvailable = maker.howManyCupsCanIMake();
-        if (cupsAvailable == cupsRequested) {
-            System.out.println("Yes, I can make that amount of coffee");
-        }
-        if (cupsAvailable > cupsRequested) {
-            System.out.printf("Yes, I can make that amount of coffee (and even %d more than that)%n"
-                    , (cupsAvailable - cupsRequested));
-        }
-        if (cupsAvailable < cupsRequested) {
-            System.out.printf("No, I can make only %d cup(s) of coffee", cupsAvailable);
-        }
-    }
 
     // validate user integer input, based on range (min value, max value) included
 
     private int validateIntegerUserInput(int minValue, int maxValue) {
         int input = 0;
-        while(true) {
+        while (true) {
             try {
                 input = Integer.parseInt(sc.nextLine());
-                if(input >= minValue && input <= maxValue) {
+                if (input >= minValue && input <= maxValue) {
                     return input;
                 }
-                System.out.println("Invalid input, only numeric values greater than 0");
+                System.out.println("Invalid input, only numeric values greater than  or equal 0");
 
             } catch (Exception e) {
-                System.out.println("Invalid input, only numeric values greater than 0");
+                System.out.println("Invalid input, only numeric values greater than or equal  0");
 
             }
         }
@@ -184,19 +149,11 @@ public class UserInterface {
     private String validateStringUserInput() {
         while (true) {
             String input = sc.nextLine();
-            if(input.equals("buy")
-            || input.equals("fill")
-            || input.equals("take")
-            || input.equals("remaining")
-            || input.equals("exit")
-            || input.equals("clean")){
+            if (input.equals("buy") || input.equals("fill") || input.equals("take") || input.equals("remaining") || input.equals("exit") || input.equals("clean")) {
                 return input;
             }
-            if(input.equals("back")
-            || input.equals("1")
-            ||input.equals("2")
-                    || input.equals("3")) {
-                        return input;
+            if (input.equals("back") || input.equals("1") || input.equals("2") || input.equals("3")) {
+                return input;
             }
             System.out.println("Wrong input");
         }
