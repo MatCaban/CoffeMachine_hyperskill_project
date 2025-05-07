@@ -57,12 +57,26 @@ public class UserInterface {
             if (action.equals("exit")) {
                 break;
             }
+            if (maker.getCupsMade() > 0) {
+
+                while (true) {
+                    System.out.println("I need cleaning!");
+                    action = validateStringUserInput();
+                    if(action.equals("clean")){
+                        clean();
+                        break;
+                    }
+                }
+            }
             switch(action) {
                 case "buy":
                     buyingCoffee();
                     break;
                 case "fill":
                     fill();
+                    break;
+                case "clan":
+                    clean();
                     break;
                 case "take":
                     take();
@@ -80,6 +94,7 @@ public class UserInterface {
     public void buyingCoffee() {
         System.out.println("\nWhat do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back - to main menu:");
         String input = validateStringUserInput();
+
         switch (input) {
             case "1":
                 maker.makeEspresso();
@@ -120,6 +135,11 @@ public class UserInterface {
         System.out.println();
     }
 
+    // clean machine
+    public void clean() {
+        maker.resetCupsMade();
+        System.out.println("I have been cleaned!");
+    }
 
     public void askForNeededCoffee() {
         System.out.println("Write how many cups of coffee you will need: ");
@@ -168,7 +188,8 @@ public class UserInterface {
             || input.equals("fill")
             || input.equals("take")
             || input.equals("remaining")
-            || input.equals("exit")) {
+            || input.equals("exit")
+            || input.equals("clean")){
                 return input;
             }
             if(input.equals("back")
